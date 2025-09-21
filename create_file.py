@@ -24,7 +24,7 @@ class CreateFileExtension(GObject.GObject, Nautilus.MenuProvider):
             tip="",
             icon="",
         )
-        menuitem.connect("activate", self.create_blank_file, current_folder)
+        menuitem.connect("activate", self.create_file, current_folder)
 
         return [ menuitem ]
     

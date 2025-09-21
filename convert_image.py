@@ -18,8 +18,13 @@ class CustomActionExtension(GObject.GObject, Nautilus.MenuProvider):
             if not ext.lower() in self.supported_formats: continue
             if os.path.exists(new_filepath): continue
 
-            img = Image.open(filepath)
-            img.save(new_filepath, format.upper())
+            try:
+
+                img = Image.open(filepath)
+                img.save(new_filepath, format.upper())
+
+            except Exception as e:
+                print(f"Error converting {filepath} to {format}: {e}")
 
     def get_file_items ( self, files: List[Nautilus.FileInfo],) -> List[Nautilus.MenuItem]:
 
